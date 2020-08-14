@@ -1,0 +1,45 @@
+{
+  "name": "monorepo-ts",
+  "version": "1.0.0",
+  "description": "A template git repo to set up a typescript monorepo",
+  "main": "index.js",
+  "repository": "git@github.com:paularmstrong/monorepo-ts.git",
+  "author": "Paul Armstrong <paul@spaceyak.com>",
+  "license": "MIT",
+  "private": true,
+  "workspaces": [
+    "src/*"
+  ],
+  "scripts": {
+    "prebuild": "yarnpkg clean",
+    "build": "lerna run build --stream --parallel",
+    "clean": "lerna run clean --stream --parallel",
+    "ci": "run-s lint:ci tsc test:ci",
+    "lint": "yarn lint:cmd --fix",
+    "lint:ci": "yarn lint:cmd",
+    "lint:cmd": "eslint . --ext '.ts,.tsx,.js,.json,.md,.snap' --cache",
+    "test": "yarn test:cmd",
+    "test:ci": "yarn test:cmd --ci",
+    "test:cmd": "jest",
+    "tsc": "tsc -p ./tsconfig.test.json"
+  },
+  "devDependencies": {
+    "@types/jest": "^24.0.18",
+    "@typescript-eslint/eslint-plugin": "^2.3.1",
+    "@typescript-eslint/parser": "^2.3.1",
+    "eslint": "^6.4.0",
+    "eslint-config-prettier": "^6.3.0",
+    "eslint-plugin-jest": "^22.17.0",
+    "eslint-plugin-json": "^1.4.0",
+    "eslint-plugin-markdown": "^1.0.0",
+    "eslint-plugin-prettier": "^3.1.1",
+    "husky": "^3.0.7",
+    "jest": "^24.9.0",
+    "lerna": "^3.16.4",
+    "lint-staged": "^9.4.0",
+    "npm-run-all": "^4.1.5",
+    "prettier": "^1.18.2",
+    "ts-jest": "^24.1.0",
+    "typescript": "^3.6.3"
+  }
+}
